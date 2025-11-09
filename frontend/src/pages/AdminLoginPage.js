@@ -39,8 +39,12 @@ const AdminLoginPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center px-4" data-testid="admin-login-page">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center space-x-2 mb-4">
-            <span className="text-5xl">🏍️</span>
+          <Link to="/" className="inline-flex items-center justify-center mb-4">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+              alt="BD Garaj Logo" 
+              className="h-24 w-24 object-contain"
+            />
           </Link>
           <h1 className="text-3xl font-bold text-white mb-2" data-testid="login-title">Admin Girişi</h1>
           <p className="text-orange-100">BD Garaj Yönetim Paneli</p>

@@ -52,6 +52,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/products"
+            element={
+              <ProtectedRoute>
+                <AdminProductsPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

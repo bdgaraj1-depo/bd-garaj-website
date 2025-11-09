@@ -166,7 +166,7 @@ const HomePage = () => {
             {services.map((service) => (
               <Link
                 key={service.id}
-                to={`/hizmet/${service.id}`}
+                to={service.name === "OTO-MOTO Alım Satım" ? "/oto-moto" : `/hizmet/${service.id}`}
                 className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden block group"
                 data-testid={`service-card-${service.id}`}
               >

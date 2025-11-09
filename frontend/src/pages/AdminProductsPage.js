@@ -191,9 +191,9 @@ const AdminProductsPage = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                🚗 Ürün Yönetimi (OTO-MOTO)
+                🚗 Ürün Yönetimi
               </h1>
-              <p className="text-gray-600">Araç, motor ve ekipman ilanlarını yönetin</p>
+              <p className="text-gray-600">OTO-MOTO ve Yedek Parça ilanlarını yönetin</p>
             </div>
             <div className="flex gap-4 mt-4 md:mt-0">
               <Link

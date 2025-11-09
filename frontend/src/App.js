@@ -26,6 +26,7 @@ function App() {
           <Route path="/blog/:id" element={<BlogDetailPage />} />
           <Route path="/hizmet/:id" element={<ServiceDetailPage />} />
           <Route path="/oto-moto" element={<OtoMotoPage />} />
+          <Route path="/oto-moto/:id" element={<ProductDetailPage />} />
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route
             path="/admin/dashboard"

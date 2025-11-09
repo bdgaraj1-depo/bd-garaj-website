@@ -6,17 +6,35 @@ import { servicesAPI, featuresAPI, testimonialsAPI, faqsAPI, contactAPI, ctaAPI 
 
 const HomePage = () => {
   const [services, setServices] = useState([]);
+  const [features, setFeatures] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+  const [faqs, setFaqs] = useState([]);
+  const [contactInfo, setContactInfo] = useState(null);
+  const [ctaSection, setCtaSection] = useState(null);
 
   useEffect(() => {
-    const fetchServices = async () => {
+    const fetchData = async () => {
       try {
-        const response = await servicesAPI.getAll();
-        setServices(response.data);
+        const [servicesRes, featuresRes, testimonialsRes, faqsRes, contactRes, ctaRes] = await Promise.all([
+          servicesAPI.getAll(),
+          featuresAPI.getAll(),
+          testimonialsAPI.getAll(),
+          faqsAPI.getAll(),
+          contactAPI.get(),
+          ctaAPI.get(),
+        ]);
+        
+        setServices(servicesRes.data);
+        setFeatures(featuresRes.data);
+        setTestimonials(testimonialsRes.data);
+        setFaqs(faqsRes.data);
+        setContactInfo(contactRes.data);
+        setCtaSection(ctaRes.data);
       } catch (error) {
-        console.error('Error fetching services:', error);
+        console.error('Error fetching data:', error);
       }
     };
-    fetchServices();
+    fetchData();
   }, []);
 
   const testimonials = [

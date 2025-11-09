@@ -16,8 +16,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2" data-testid="nav-home-link">
-              <span className="text-2xl">🏍️</span>
+            <Link to="/" className="flex items-center space-x-3" data-testid="nav-home-link">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+                alt="BD Garaj Logo" 
+                className="h-12 w-12 object-contain"
+              />
               <span className="text-xl font-bold text-gray-900">BD Garaj</span>
             </Link>
           </div>

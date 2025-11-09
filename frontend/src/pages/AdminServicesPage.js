@@ -73,6 +73,7 @@ const AdminServicesPage = () => {
       name: service.name,
       description: service.description,
       icon: service.icon,
+      image_url: service.image_url || '',
     });
     setShowModal(true);
   };

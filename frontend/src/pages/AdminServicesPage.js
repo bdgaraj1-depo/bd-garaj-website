@@ -15,6 +15,7 @@ const AdminServicesPage = () => {
     name: '',
     description: '',
     icon: '',
+    image_url: '',
   });
 
   useEffect(() => {

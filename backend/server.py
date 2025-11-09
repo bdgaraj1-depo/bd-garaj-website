@@ -118,6 +118,7 @@ class Service(BaseModel):
     name: str
     description: str
     icon: str
+    image_url: Optional[str] = ""
 
 # ==================== HELPER FUNCTIONS ====================
 

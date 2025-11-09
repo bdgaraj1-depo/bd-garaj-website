@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { openWhatsApp } from '../utils/whatsapp';
 
 const Footer = () => {
   return (

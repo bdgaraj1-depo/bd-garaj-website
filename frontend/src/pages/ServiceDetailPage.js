@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { servicesAPI } from '../services/api';
+import { openWhatsApp } from '../utils/whatsapp';
 
 const ServiceDetailPage = () => {
   const { id } = useParams();

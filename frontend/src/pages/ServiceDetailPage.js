@@ -41,7 +41,51 @@ const ServiceDetailPage = () => {
       }
     };
     fetchService();
+    fetchComments();
   }, [id]);
+
+  const fetchComments = async () => {
+    try {
+      const response = await commentsAPI.getAll(id, 'approved');
+      setComments(response.data);
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+    }
+  };
+
+  const handleCommentChange = (e) => {
+    setCommentForm({
+      ...commentForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+    setCommentSubmitting(true);
+    setCommentSuccess(false);
+
+    try {
+      await commentsAPI.create({
+        service_id: id,
+        ...commentForm,
+      });
+      setCommentSuccess(true);
+      setCommentForm({
+        user_name: '',
+        user_email: '',
+        comment_text: '',
+        rating: 5,
+      });
+      setShowCommentForm(false);
+      setTimeout(() => setCommentSuccess(false), 5000);
+    } catch (error) {
+      console.error('Error submitting comment:', error);
+      alert('Yorum gönderilirken bir hata oluştu.');
+    } finally {
+      setCommentSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col" data-testid="service-detail-page">

@@ -195,11 +195,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Products API endpoints full testing"
     - "Admin panel - Products management"
-    - "Image upload for products"
+    - "Frontend integration testing"
   stuck_tasks: []
-  test_all: true
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:

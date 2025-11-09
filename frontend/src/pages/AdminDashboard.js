@@ -104,6 +104,13 @@ const AdminDashboard = () => {
                 Hizmet Yönetimi
               </Link>
               <Link
+                to="/admin/comments"
+                className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition"
+                data-testid="manage-comments-btn"
+              >
+                💬 Yorum Yönetimi
+              </Link>
+              <Link
                 to="/admin/blog"
                 className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition"
                 data-testid="manage-blog-btn"

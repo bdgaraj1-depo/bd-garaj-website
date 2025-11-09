@@ -182,21 +182,22 @@ const AdminServicesPage = () => {
                     </div>
                     <p className="text-gray-600 mb-4">{service.description}</p>
 
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleEdit(service)}
-                      className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm"
-                      data-testid={`edit-btn-${service.id}`}
-                    >
-                      Düzenle
-                    </button>
-                    <button
-                      onClick={() => handleDelete(service.id)}
-                      className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm"
-                      data-testid={`delete-btn-${service.id}`}
-                    >
-                      Sil
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleEdit(service)}
+                        className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm"
+                        data-testid={`edit-btn-${service.id}`}
+                      >
+                        Düzenle
+                      </button>
+                      <button
+                        onClick={() => handleDelete(service.id)}
+                        className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm"
+                        data-testid={`delete-btn-${service.id}`}
+                      >
+                        Sil
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}

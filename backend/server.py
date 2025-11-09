@@ -187,6 +187,11 @@ Randevu ID: {appointment.id}"""
 @app.on_event("startup")
 async def startup_db_client():
     """Initialize database with default admin and services"""
+    # Create uploads directory if not exists
+    uploads_dir = Path("/app/backend/uploads")
+    uploads_dir.mkdir(exist_ok=True)
+    logger.info(f"Uploads directory: {uploads_dir}")
+    
     # Create default admin if not exists
     admin_exists = await db.admins.find_one({"username": "admin"})
     if not admin_exists:

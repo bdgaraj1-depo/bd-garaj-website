@@ -110,30 +110,35 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => (
-              <div
+              <Link
                 key={service.id}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
+                to={`/hizmet/${service.id}`}
+                className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden block group"
                 data-testid={`service-card-${service.id}`}
               >
                 {service.image_url ? (
-                  <img
-                    src={service.image_url}
-                    alt={service.name}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={service.image_url}
+                      alt={service.name}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all"></div>
+                  </div>
                 ) : (
-                  <div className="w-full h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                    <span className="text-6xl">{service.icon}</span>
+                  <div className="w-full h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-700 transition-all">
+                    <span className="text-6xl group-hover:scale-110 transition-transform">{service.icon}</span>
                   </div>
                 )}
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-2xl">{service.icon}</span>
-                    <h3 className="text-xl font-semibold text-gray-900">{service.name}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">{service.name}</h3>
                   </div>
-                  <p className="text-gray-600">{service.description}</p>
+                  <p className="text-gray-600 mb-3">{service.description}</p>
+                  <span className="text-orange-600 font-medium group-hover:underline">Detaylı Bilgi →</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

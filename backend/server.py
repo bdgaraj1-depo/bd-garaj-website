@@ -193,16 +193,19 @@ async def startup_db_client():
     logger.info(f"Uploads directory: {uploads_dir}")
     
     # Create default admin if not exists
-    admin_exists = await db.admins.find_one({"username": "admin"})
+    admin_exists = await db.admins.find_one({"username": "Burak5834"})
     if not admin_exists:
+        # Remove old admin if exists
+        await db.admins.delete_many({"username": "admin"})
+        
         default_admin = Admin(
-            username="admin",
-            password_hash=hash_password("admin123")
+            username="Burak5834",
+            password_hash=hash_password("Burak58811434")
         )
         doc = default_admin.model_dump()
         doc['created_at'] = doc['created_at'].isoformat()
         await db.admins.insert_one(doc)
-        logger.info("Default admin created: username=admin, password=admin123")
+        logger.info("Default admin created: username=Burak5834")
 
     # Create default services
     services_count = await db.services.count_documents({})

@@ -110,11 +110,9 @@ const AdminLoginPage = () => {
 
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
             <p className="text-xs text-gray-600">
-              <strong>Varsayılan Giriş:</strong>
+              <strong>Admin Girişi:</strong>
               <br />
-              Kullanıcı Adı: <code className="bg-gray-200 px-1 rounded">admin</code>
-              <br />
-              Şifre: <code className="bg-gray-200 px-1 rounded">admin123</code>
+              Kullanıcı adı ve şifrenizi girin
             </p>
           </div>
         </div>

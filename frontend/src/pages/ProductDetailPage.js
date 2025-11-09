@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { productsAPI } from '../services/api';
+import { openWhatsApp } from '../utils/whatsapp';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 

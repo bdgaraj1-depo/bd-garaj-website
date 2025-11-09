@@ -6,33 +6,24 @@
 const WHATSAPP_NUMBER = '905326832603';
 
 /**
- * WhatsApp linki oluşturur
+ * WhatsApp linki oluşturur - Hem mobil hem PC için wa.me kullanır
  * @param {string} message - Gönderilecek mesaj
  * @returns {string} - WhatsApp URL
  */
 export const getWhatsAppLink = (message = '') => {
   const encodedMessage = encodeURIComponent(message);
-  
-  // Mobil cihaz kontrolü
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
-  
-  // Mobil cihazlarda wa.me, masaüstünde web.whatsapp.com kullan
-  if (isMobile) {
-    return `https://wa.me/${WHATSAPP_NUMBER}${message ? `?text=${encodedMessage}` : ''}`;
-  } else {
-    return `https://web.whatsapp.com/send?phone=${WHATSAPP_NUMBER}${message ? `&text=${encodedMessage}` : ''}`;
-  }
+  // wa.me hem WhatsApp Desktop hem WhatsApp Web'i otomatik açar
+  return `https://wa.me/${WHATSAPP_NUMBER}${message ? `?text=${encodedMessage}` : ''}`;
 };
 
 /**
- * WhatsApp bağlantısını yeni pencerede açar
+ * WhatsApp bağlantısını aynı pencerede açar (PC ve mobil için)
  * @param {string} message - Gönderilecek mesaj
  */
 export const openWhatsApp = (message = '') => {
   const url = getWhatsAppLink(message);
-  window.open(url, '_blank', 'noopener,noreferrer');
+  // Aynı pencerede aç - WhatsApp Desktop/Web otomatik açılır
+  window.location.href = url;
 };
 
 /**

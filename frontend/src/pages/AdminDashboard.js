@@ -88,13 +88,22 @@ const AdminDashboard = () => {
               </h1>
               <p className="text-gray-600">Randevuları yönetin ve takip edin</p>
             </div>
-            <Link
-              to="/admin/blog"
-              className="mt-4 md:mt-0 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition"
-              data-testid="manage-blog-btn"
-            >
-              Blog Yönetimi
-            </Link>
+            <div className="flex gap-4 mt-4 md:mt-0">
+              <Link
+                to="/admin/services"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+                data-testid="manage-services-btn"
+              >
+                Hizmet Yönetimi
+              </Link>
+              <Link
+                to="/admin/blog"
+                className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition"
+                data-testid="manage-blog-btn"
+              >
+                Blog Yönetimi
+              </Link>
+            </div>
           </div>
 
           {/* Filter Tabs */}

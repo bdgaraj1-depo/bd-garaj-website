@@ -7,10 +7,12 @@ import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import OtoMotoPage from './pages/OtoMotoPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminBlogPage from './pages/AdminBlogPage';
 import AdminServicesPage from './pages/AdminServicesPage';
+import AdminProductsPage from './pages/AdminProductsPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {

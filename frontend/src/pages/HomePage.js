@@ -143,20 +143,15 @@ const HomePage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: '👨‍🔧', title: '10+ yıllık deneyim', desc: 'Sektör uzmansı ekip' },
-              { icon: '🇹🇷', title: 'Yerli üretim', desc: 'Çözümlerimiz yerli ve milli' },
-              { icon: '✅', title: '6 ay garanti', desc: 'Tüm hizmetlerde garanti' },
-              { icon: '📞', title: '7/24 destek', desc: 'Danışmanlık desteği' },
-            ].map((item, index) => (
+            {features.map((feature, index) => (
               <div
-                key={index}
+                key={feature.id}
                 className="bg-orange-50 p-6 rounded-lg text-center"
                 data-testid={`feature-${index}`}
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+                <div className="text-4xl mb-3">{feature.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>

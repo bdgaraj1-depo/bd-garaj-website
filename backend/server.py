@@ -249,6 +249,27 @@ class ProductUpdate(BaseModel):
     contact_email: Optional[str] = None
     specs: Optional[dict] = None
 
+class Comment(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    service_id: str
+    user_name: str
+    user_email: EmailStr
+    comment_text: str
+    rating: Optional[int] = Field(default=5, ge=1, le=5)  # 1-5 yıldız
+    status: str = "pending"  # pending, approved, rejected
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+class CommentCreate(BaseModel):
+    service_id: str
+    user_name: str
+    user_email: EmailStr
+    comment_text: str
+    rating: Optional[int] = Field(default=5, ge=1, le=5)
+
+class CommentUpdate(BaseModel):
+    status: str  # approved, rejected
+
 # ==================== HELPER FUNCTIONS ====================
 
 def hash_password(password: str) -> str:

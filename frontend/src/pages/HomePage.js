@@ -218,21 +218,23 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-orange-600 text-white py-16" data-testid="cta-section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            🚀 Hemen Randevu Alın!
-          </h2>
-          <p className="text-xl mb-8">%10 İndirimli İlk Servis</p>
-          <Link
-            to="/randevu"
-            className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition shadow-lg inline-block"
-            data-testid="cta-appointment-btn"
-          >
-            Randevu Formunu Doldur
-          </Link>
-        </div>
-      </section>
+      {ctaSection && (
+        <section className="bg-orange-600 text-white py-16" data-testid="cta-section">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {ctaSection.title}
+            </h2>
+            <p className="text-xl mb-8">{ctaSection.subtitle}</p>
+            <Link
+              to="/randevu"
+              className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition shadow-lg inline-block"
+              data-testid="cta-appointment-btn"
+            >
+              {ctaSection.button_text}
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Contact Section */}
       <section className="py-20 bg-gray-50" data-testid="contact-section">

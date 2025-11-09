@@ -41,9 +41,9 @@ const AdminLoginPage = () => {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center justify-center mb-4">
             <img 
-              src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+              src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/7gc7uuu4_PHOTO-2025-11-09-23-04-00.jpg" 
               alt="BD Garaj Logo" 
-              className="h-24 w-24 object-contain"
+              className="h-32 w-auto object-contain"
             />
           </Link>
           <h1 className="text-3xl font-bold text-white mb-2" data-testid="login-title">Admin Girişi</h1>

@@ -23,6 +23,7 @@ function App() {
           <Route path="/blog" element={<BlogListPage />} />
           <Route path="/blog/:id" element={<BlogDetailPage />} />
           <Route path="/hizmet/:id" element={<ServiceDetailPage />} />
+          <Route path="/oto-moto" element={<OtoMotoPage />} />
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route
             path="/admin/dashboard"

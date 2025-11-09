@@ -209,7 +209,7 @@ const ServiceDetailPage = () => {
                         Randevu Al
                       </Link>
                       <a
-                        href="https://wa.me/905326832603"
+                        href={`https://wa.me/905326832603?text=Merhaba%2C%20${encodeURIComponent(service.name)}%20hizmeti%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition"

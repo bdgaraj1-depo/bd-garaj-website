@@ -48,6 +48,9 @@ export const blogAPI = {
 // Services API
 export const servicesAPI = {
   getAll: () => apiClient.get('/services'),
+  create: (data) => apiClient.post('/services', data),
+  update: (id, data) => apiClient.put(`/services/${id}`, data),
+  delete: (id) => apiClient.delete(`/services/${id}`),
 };
 
 export default apiClient;

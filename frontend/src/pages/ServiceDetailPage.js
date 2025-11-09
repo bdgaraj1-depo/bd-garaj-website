@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { servicesAPI } from '../services/api';
+import { servicesAPI, commentsAPI } from '../services/api';
 import { openWhatsApp } from '../utils/whatsapp';
 
 const ServiceDetailPage = () => {
@@ -10,6 +10,18 @@ const ServiceDetailPage = () => {
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  
+  // Comments state
+  const [comments, setComments] = useState([]);
+  const [showCommentForm, setShowCommentForm] = useState(false);
+  const [commentForm, setCommentForm] = useState({
+    user_name: '',
+    user_email: '',
+    comment_text: '',
+    rating: 5,
+  });
+  const [commentSubmitting, setCommentSubmitting] = useState(false);
+  const [commentSuccess, setCommentSuccess] = useState(false);
 
   useEffect(() => {
     const fetchService = async () => {

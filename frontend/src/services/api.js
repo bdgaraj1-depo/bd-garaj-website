@@ -62,4 +62,40 @@ export const servicesAPI = {
   },
 };
 
+// Features API (Neden BD Garaj)
+export const featuresAPI = {
+  getAll: () => apiClient.get('/features'),
+  create: (data) => apiClient.post('/features', data),
+  update: (id, data) => apiClient.put(`/features/${id}`, data),
+  delete: (id) => apiClient.delete(`/features/${id}`),
+};
+
+// Testimonials API (Müşteri Yorumları)
+export const testimonialsAPI = {
+  getAll: () => apiClient.get('/testimonials'),
+  create: (data) => apiClient.post('/testimonials', data),
+  update: (id, data) => apiClient.put(`/testimonials/${id}`, data),
+  delete: (id) => apiClient.delete(`/testimonials/${id}`),
+};
+
+// FAQs API
+export const faqsAPI = {
+  getAll: () => apiClient.get('/faqs'),
+  create: (data) => apiClient.post('/faqs', data),
+  update: (id, data) => apiClient.put(`/faqs/${id}`, data),
+  delete: (id) => apiClient.delete(`/faqs/${id}`),
+};
+
+// Contact Info API
+export const contactAPI = {
+  get: () => apiClient.get('/contact-info'),
+  update: (data) => apiClient.put('/contact-info', data),
+};
+
+// CTA Section API
+export const ctaAPI = {
+  get: () => apiClient.get('/cta-section'),
+  update: (data) => apiClient.put('/cta-section', data),
+};
+
 export default apiClient;

@@ -319,6 +319,70 @@ async def startup_db_client():
         {"name": "Sigorta Takibi"},
         {"$set": {"name": "Sigorta Hasar Takip"}}
     )
+    
+    # Create default features (Neden BD Garaj)
+    features_count = await db.features.count_documents({})
+    if features_count == 0:
+        default_features = [
+            Feature(icon="👨‍🔧", title="10+ yıllık deneyim", description="Sektör uzmanı ekip", order=1),
+            Feature(icon="🇹🇷", title="Yerli üretim", description="Çözümlerimiz yerli ve milli", order=2),
+            Feature(icon="✅", title="6 ay garanti", description="Tüm hizmetlerde garanti", order=3),
+            Feature(icon="📞", title="7/24 destek", description="Danışmanlık desteği", order=4),
+        ]
+        for feature in default_features:
+            await db.features.insert_one(feature.model_dump())
+        logger.info(f"{len(default_features)} default features created")
+    
+    # Create default testimonials
+    testimonials_count = await db.testimonials.count_documents({})
+    if testimonials_count == 0:
+        default_testimonials = [
+            Testimonial(name="Ahmet Y.", text="Profesyonel ekip, güvenilir hizmet!", rating=5, order=1),
+            Testimonial(name="Mehmet K.", text="Motosikletim adeta yeniden doğdu!", rating=5, order=2),
+            Testimonial(name="Burak D.", text="İlgileri ve iş kaliteleri mükemmel", rating=5, order=3),
+        ]
+        for testimonial in default_testimonials:
+            await db.testimonials.insert_one(testimonial.model_dump())
+        logger.info(f"{len(default_testimonials)} default testimonials created")
+    
+    # Create default FAQs
+    faqs_count = await db.faqs.count_documents({})
+    if faqs_count == 0:
+        default_faqs = [
+            FAQ(question="Hangi motosiklet markalarına hizmet veriyorsunuz?", answer="Tüm marka ve modellere hizmet veriyoruz.", order=1),
+            FAQ(question="İşlem süreleri ne kadar?", answer="İşleme göre değişmekle birlikte, 1-3 iş günü arasında tamamlıyoruz.", order=2),
+            FAQ(question="Garanti hizmetiniz var mı?", answer="Evet, tüm hizmetlerimiz için 6 ay garanti sunuyoruz.", order=3),
+            FAQ(question="Acil durumlarda ne yapmalıyım?", answer="7/24 WhatsApp hattımızdan bize ulaşabilirsiniz.", order=4),
+        ]
+        for faq in default_faqs:
+            await db.faqs.insert_one(faq.model_dump())
+        logger.info(f"{len(default_faqs)} default FAQs created")
+    
+    # Create default contact info
+    contact_exists = await db.contact_info.find_one({"id": "contact_info"})
+    if not contact_exists:
+        default_contact = ContactInfo(
+            address="Hızırreis Sok. No:1A, Bayrampaşa / İstanbul",
+            phone="0532 683 26 03",
+            email="bdgaraj1@gmail.com",
+            whatsapp="+905326832603",
+            working_hours="Pazartesi - Cumartesi: 08:00 - 17:00",
+            emergency_phone="0532 683 26 03",
+            maps_url="https://maps.google.com/?q=Hızırreis+Sok.+No:1A+Bayrampaşa+Istanbul"
+        )
+        await db.contact_info.insert_one(default_contact.model_dump())
+        logger.info("Default contact info created")
+    
+    # Create default CTA section
+    cta_exists = await db.cta_section.find_one({"id": "cta_section"})
+    if not cta_exists:
+        default_cta = CTASection(
+            title="🚀 Hemen Randevu Alın!",
+            subtitle="%10 İndirimli İlk Servis",
+            button_text="Randevu Formunu Doldur"
+        )
+        await db.cta_section.insert_one(default_cta.model_dump())
+        logger.info("Default CTA section created")
 
 # ==================== AUTH ENDPOINTS ====================
 

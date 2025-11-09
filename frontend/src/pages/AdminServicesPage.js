@@ -95,8 +95,30 @@ const AdminServicesPage = () => {
       name: '',
       description: '',
       icon: '',
+      image_url: '',
     });
     setShowModal(true);
+  };
+
+  const handleImageUpload = async (file) => {
+    try {
+      const response = await servicesAPI.uploadImage(file);
+      const imageUrl = `${BACKEND_URL}${response.data.url}`;
+      setFormData({
+        ...formData,
+        image_url: imageUrl,
+      });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    }
+  };
+
+  const handleImageRemove = () => {
+    setFormData({
+      ...formData,
+      image_url: '',
+    });
   };
 
   return (

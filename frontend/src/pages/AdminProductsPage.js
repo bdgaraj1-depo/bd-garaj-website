@@ -341,9 +341,15 @@ const AdminProductsPage = () => {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
                   >
-                    <option value="vehicle">🚙 Araç</option>
-                    <option value="motorcycle">🏍️ Motor</option>
-                    <option value="equipment">🧰 Ekipman</option>
+                    <optgroup label="OTO-MOTO">
+                      <option value="vehicle">🚙 Araç</option>
+                      <option value="motorcycle">🏍️ Motor</option>
+                      <option value="equipment">🧰 Ekipman</option>
+                    </optgroup>
+                    <optgroup label="Yedek Parça">
+                      <option value="spare_parts_new">✨ Sıfır Yedek Parça</option>
+                      <option value="spare_parts_used">♻️ İkinci El Yedek Parça</option>
+                    </optgroup>
                   </select>
                 </div>
 

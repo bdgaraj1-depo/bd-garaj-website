@@ -215,15 +215,17 @@ const AdminProductsPage = () => {
           {/* Category Filter */}
           <div className="mb-6 flex gap-2 overflow-x-auto">
             {[
-              { id: 'all', name: 'Tümü' },
-              { id: 'vehicle', name: 'Araçlar' },
-              { id: 'motorcycle', name: 'Motorlar' },
-              { id: 'equipment', name: 'Ekipmanlar' },
+              { id: 'all', name: '📦 Tümü' },
+              { id: 'vehicle', name: '🚙 Araçlar' },
+              { id: 'motorcycle', name: '🏍️ Motorlar' },
+              { id: 'equipment', name: '🧰 Ekipmanlar' },
+              { id: 'spare_parts_new', name: '✨ Sıfır Yedek Parça' },
+              { id: 'spare_parts_used', name: '♻️ İkinci El Yedek Parça' },
             ].map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
+                className={`px-4 py-2 rounded-lg font-medium transition whitespace-nowrap ${
                   selectedCategory === cat.id
                     ? 'bg-orange-600 text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100'

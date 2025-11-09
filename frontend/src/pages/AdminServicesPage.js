@@ -56,6 +56,7 @@ const AdminServicesPage = () => {
         name: '',
         description: '',
         icon: '',
+        image_url: '',
       });
       fetchServices();
     } catch (error) {

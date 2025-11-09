@@ -58,23 +58,93 @@ const HomePage = () => {
               yazılım, bakım & onarım, çanta projelendirme ve montaj, sigorta ve dosya takibi
               hizmetleri sunuyoruz.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/randevu"
-                className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition shadow-lg"
-                data-testid="hero-appointment-btn"
-              >
-                Hemen Randevu Al 🔥
-              </Link>
-              <a
-                href="https://wa.me/905326832603"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition shadow-lg"
-                data-testid="hero-whatsapp-btn"
-              >
-                WhatsApp İletişim
-              </a>
+            
+            {/* Buttons and QR Codes Container */}
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/randevu"
+                  className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition shadow-lg"
+                  data-testid="hero-appointment-btn"
+                >
+                  Hemen Randevu Al 🔥
+                </Link>
+                <a
+                  href="https://wa.me/905326832603"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition shadow-lg"
+                  data-testid="hero-whatsapp-btn"
+                >
+                  WhatsApp İletişim
+                </a>
+              </div>
+
+              {/* QR Codes */}
+              <div className="flex gap-6">
+                {/* Android QR Code */}
+                <div className="bg-white p-4 rounded-xl shadow-lg" data-testid="android-qr">
+                  <div className="mb-2 text-center">
+                    <p className="text-gray-800 font-semibold text-sm mb-1">📱 Android</p>
+                    <p className="text-gray-600 text-xs">Mobil Uygulama</p>
+                  </div>
+                  <QRCodeSVG
+                    value={window.location.origin + "?platform=android"}
+                    size={120}
+                    level="H"
+                    includeMargin={true}
+                    bgColor="#ffffff"
+                    fgColor="#000000"
+                  />
+                  <p className="text-gray-600 text-xs text-center mt-2">Kare kodu okut</p>
+                </div>
+
+                {/* iOS QR Code */}
+                <div className="bg-white p-4 rounded-xl shadow-lg" data-testid="ios-qr">
+                  <div className="mb-2 text-center">
+                    <p className="text-gray-800 font-semibold text-sm mb-1">🍎 iOS</p>
+                    <p className="text-gray-600 text-xs">Mobil Uygulama</p>
+                  </div>
+                  <QRCodeSVG
+                    value={window.location.origin + "?platform=ios"}
+                    size={120}
+                    level="H"
+                    includeMargin={true}
+                    bgColor="#ffffff"
+                    fgColor="#000000"
+                  />
+                  <p className="text-gray-600 text-xs text-center mt-2">Kare kodu okut</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* PWA Install Instructions */}
+            <div className="mt-8 max-w-2xl mx-auto">
+              <details className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                <summary className="cursor-pointer font-semibold text-white hover:text-orange-100 transition">
+                  📲 Mobil Uygulama Nasıl Kurulur?
+                </summary>
+                <div className="mt-4 space-y-3 text-sm text-orange-50">
+                  <div>
+                    <p className="font-semibold mb-1">🤖 Android:</p>
+                    <ol className="list-decimal list-inside space-y-1 ml-2">
+                      <li>QR kodu telefonunuzla okutun</li>
+                      <li>Menüden "Ana ekrana ekle" seçin</li>
+                      <li>Uygulama ana ekranınıza eklenecek</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">🍎 iOS (iPhone/iPad):</p>
+                    <ol className="list-decimal list-inside space-y-1 ml-2">
+                      <li>QR kodu telefonunuzla okutun</li>
+                      <li>Safari'de paylaş butonuna tıklayın</li>
+                      <li>"Ana Ekrana Ekle" seçin</li>
+                      <li>Uygulama ana ekranınıza eklenecek</li>
+                    </ol>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>

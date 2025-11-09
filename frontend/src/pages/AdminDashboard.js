@@ -94,7 +94,7 @@ const AdminDashboard = () => {
                 className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
                 data-testid="manage-products-btn"
               >
-                Ürün Yönetimi (OTO-MOTO)
+                Ürün Yönetimi (OTO-MOTO & Yedek Parça)
               </Link>
               <Link
                 to="/admin/services"

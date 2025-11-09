@@ -51,6 +51,15 @@ export const servicesAPI = {
   create: (data) => apiClient.post('/services', data),
   update: (id, data) => apiClient.put(`/services/${id}`, data),
   delete: (id) => apiClient.delete(`/services/${id}`),
+  uploadImage: (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return apiClient.post('/upload/service-image', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  },
 };
 
 export default apiClient;

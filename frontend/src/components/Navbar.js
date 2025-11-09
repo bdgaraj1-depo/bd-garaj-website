@@ -18,11 +18,10 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-3" data-testid="nav-home-link">
               <img 
-                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/7gc7uuu4_PHOTO-2025-11-09-23-04-00.jpg" 
                 alt="BD Garaj Logo" 
-                className="h-12 w-12 object-contain"
+                className="h-14 w-auto object-contain"
               />
-              <span className="text-xl font-bold text-gray-900">BD Garaj</span>
             </Link>
           </div>
 

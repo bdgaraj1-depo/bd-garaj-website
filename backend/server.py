@@ -209,6 +209,46 @@ class CTASectionUpdate(BaseModel):
     subtitle: Optional[str] = None
     button_text: Optional[str] = None
 
+class Product(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    category: str  # "vehicle", "motorcycle", "equipment"
+    title: str
+    description: str
+    price: float
+    currency: str = "TRY"
+    images: List[str] = []
+    status: str = "active"  # active, sold, reserved
+    contact_phone: Optional[str] = ""
+    contact_email: Optional[str] = ""
+    specs: Optional[dict] = {}  # Additional specs like year, km, brand, etc
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ProductCreate(BaseModel):
+    category: str
+    title: str
+    description: str
+    price: float
+    currency: str = "TRY"
+    images: List[str] = []
+    status: str = "active"
+    contact_phone: Optional[str] = ""
+    contact_email: Optional[str] = ""
+    specs: Optional[dict] = {}
+
+class ProductUpdate(BaseModel):
+    category: Optional[str] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    price: Optional[float] = None
+    currency: Optional[str] = None
+    images: Optional[List[str]] = None
+    status: Optional[str] = None
+    contact_phone: Optional[str] = None
+    contact_email: Optional[str] = None
+    specs: Optional[dict] = None
+
 # ==================== HELPER FUNCTIONS ====================
 
 def hash_password(password: str) -> str:

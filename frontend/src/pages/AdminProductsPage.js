@@ -157,7 +157,7 @@ const AdminProductsPage = () => {
       price: '',
       currency: 'TRY',
       status: 'active',
-      contact_phone: '0532 683 26 03',
+      contact_phone: '05326832603',
       contact_email: 'bdgaraj1@gmail.com',
       images: [],
       specs: {},

@@ -213,13 +213,23 @@ async def startup_db_client():
         default_services = [
             Service(name="AlienTech Yazılım", description="Motor performans optimizasyonu ve ECU yazılımı", icon="💻"),
             Service(name="Bakım & Onarım", description="Periyodik bakım ve genel onarım hizmetleri", icon="🔧"),
-            Service(name="Çanta Montajı", description="TSE onaylı çanta sistemleri projelendirme ve montaj", icon="🧳"),
-            Service(name="Sigorta Takibi", description="Kaza ve hasar durumlarında sigorta işlemleri takibi", icon="📋"),
+            Service(name="Çanta Montaj Projelendirme", description="TSE onaylı çanta sistemleri projelendirme ve montaj", icon="🧳"),
+            Service(name="Sigorta Hasar Takip", description="Kaza ve hasar durumlarında sigorta işlemleri takibi", icon="📋"),
         ]
         for service in default_services:
             doc = service.model_dump()
             await db.services.insert_one(doc)
         logger.info(f"{len(default_services)} default services created")
+    
+    # Update old service names if they exist
+    await db.services.update_one(
+        {"name": "Çanta Montajı"},
+        {"$set": {"name": "Çanta Montaj Projelendirme"}}
+    )
+    await db.services.update_one(
+        {"name": "Sigorta Takibi"},
+        {"$set": {"name": "Sigorta Hasar Takip"}}
+    )
 
 # ==================== AUTH ENDPOINTS ====================
 

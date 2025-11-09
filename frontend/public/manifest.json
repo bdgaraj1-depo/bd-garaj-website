@@ -1,0 +1,24 @@
+{
+  "short_name": "BD Garaj",
+  "name": "BD Garaj - Motosiklet Servisi",
+  "description": "İstanbul Bayrampaşa'da motosiklet servisi, AlienTech yazılım, bakım & onarım hizmetleri",
+  "icons": [
+    {
+      "src": "https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/7gc7uuu4_PHOTO-2025-11-09-23-04-00.jpg",
+      "type": "image/jpeg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/7gc7uuu4_PHOTO-2025-11-09-23-04-00.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ea580c",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "tr"
+}

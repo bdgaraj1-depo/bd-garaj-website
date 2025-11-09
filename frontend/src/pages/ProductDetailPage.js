@@ -202,15 +202,13 @@ const ProductDetailPage = () => {
                     </a>
                   )}
 
-                  <a
-                    href={`https://wa.me/905326832603?text=Merhaba, ${product.title} hakkında bilgi almak istiyorum.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => openWhatsApp(`Merhaba, ${product.title} hakkında bilgi almak istiyorum.`)}
                     className="block w-full bg-green-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-green-700 transition"
                     data-testid="contact-whatsapp"
                   >
                     WhatsApp ile İletişim
-                  </a>
+                  </button>
 
                   {product.contact_email && (
                     <a

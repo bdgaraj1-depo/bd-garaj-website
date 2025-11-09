@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import ImageUploader from '../components/ImageUploader';
 import { servicesAPI } from '../services/api';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const AdminServicesPage = () => {
   const [services, setServices] = useState([]);

@@ -112,12 +112,27 @@ const HomePage = () => {
             {services.map((service) => (
               <div
                 key={service.id}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition"
+                className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
                 data-testid={`service-card-${service.id}`}
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.name}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                {service.image_url ? (
+                  <img
+                    src={service.image_url}
+                    alt={service.name}
+                    className="w-full h-48 object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                    <span className="text-6xl">{service.icon}</span>
+                  </div>
+                )}
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">{service.icon}</span>
+                    <h3 className="text-xl font-semibold text-gray-900">{service.name}</h3>
+                  </div>
+                  <p className="text-gray-600">{service.description}</p>
+                </div>
               </div>
             ))}
           </div>

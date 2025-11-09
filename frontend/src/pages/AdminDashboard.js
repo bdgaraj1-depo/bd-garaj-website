@@ -88,7 +88,14 @@ const AdminDashboard = () => {
               </h1>
               <p className="text-gray-600">Randevuları yönetin ve takip edin</p>
             </div>
-            <div className="flex gap-4 mt-4 md:mt-0">
+            <div className="flex gap-4 mt-4 md:mt-0 flex-wrap">
+              <Link
+                to="/admin/products"
+                className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
+                data-testid="manage-products-btn"
+              >
+                Ürün Yönetimi (OTO-MOTO)
+              </Link>
               <Link
                 to="/admin/services"
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"

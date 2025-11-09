@@ -952,6 +952,87 @@ async def upload_product_image(
     
     return {"url": file_url, "filename": unique_filename}
 
+# ==================== COMMENTS API ====================
+
+@api_router.get("/comments", response_model=List[Comment])
+async def get_comments(service_id: Optional[str] = None, status: Optional[str] = None):
+    """Get comments (public - only approved, or admin - all)"""
+    query = {}
+    
+    if service_id:
+        query["service_id"] = service_id
+    
+    # If status filter is provided, use it; otherwise show only approved for public
+    if status:
+        query["status"] = status
+    else:
+        query["status"] = "approved"  # Public only sees approved comments
+    
+    comments = await db.comments.find(query, {"_id": 0}).sort("created_at", -1).to_list(length=None)
+    return [Comment(**comment) for comment in comments]
+
+@api_router.get("/comments/all", response_model=List[Comment])
+async def get_all_comments(
+    service_id: Optional[str] = None, 
+    status: Optional[str] = None,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    """Get all comments (admin only - includes pending and rejected)"""
+    query = {}
+    
+    if service_id:
+        query["service_id"] = service_id
+    
+    if status:
+        query["status"] = status
+    
+    comments = await db.comments.find(query, {"_id": 0}).sort("created_at", -1).to_list(length=None)
+    return [Comment(**comment) for comment in comments]
+
+@api_router.post("/comments", response_model=Comment)
+async def create_comment(comment: CommentCreate):
+    """Create a new comment (public - starts as pending)"""
+    # Verify service exists
+    service = await db.services.find_one({"id": comment.service_id}, {"_id": 0})
+    if not service:
+        raise HTTPException(status_code=404, detail="Service not found")
+    
+    new_comment = Comment(**comment.model_dump(), status="pending")
+    await db.comments.insert_one(new_comment.model_dump())
+    
+    logger.info(f"New comment created for service {comment.service_id} by {comment.user_name}")
+    return new_comment
+
+@api_router.patch("/comments/{comment_id}", response_model=Comment)
+async def update_comment_status(
+    comment_id: str, 
+    update: CommentUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    """Update comment status (admin only)"""
+    if update.status not in ["approved", "rejected", "pending"]:
+        raise HTTPException(status_code=400, detail="Invalid status")
+    
+    result = await db.comments.update_one(
+        {"id": comment_id},
+        {"$set": {"status": update.status}}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Comment not found")
+    
+    updated_comment = await db.comments.find_one({"id": comment_id}, {"_id": 0})
+    logger.info(f"Comment {comment_id} status updated to {update.status}")
+    return Comment(**updated_comment)
+
+@api_router.delete("/comments/{comment_id}")
+async def delete_comment(comment_id: str, current_admin: Admin = Depends(get_current_admin)):
+    """Delete a comment (admin only)"""
+    result = await db.comments.delete_one({"id": comment_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Comment not found")
+    return {"message": "Comment deleted successfully"}
+
 # ==================== HEALTH CHECK ====================
 
 @api_router.get("/")

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { servicesAPI } from '../services/api';
+import { servicesAPI, featuresAPI, testimonialsAPI, faqsAPI, contactAPI, ctaAPI } from '../services/api';
 
 const HomePage = () => {
   const [services, setServices] = useState([]);

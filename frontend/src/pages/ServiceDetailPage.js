@@ -299,6 +299,130 @@ const ServiceDetailPage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Comments Section */}
+              {!loading && !error && (
+                <div className="bg-white rounded-xl shadow-md p-8 mt-8">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900">💬 Müşteri Yorumları</h3>
+                    <button
+                      onClick={() => setShowCommentForm(!showCommentForm)}
+                      className="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition"
+                    >
+                      {showCommentForm ? 'İptal' : '+ Yorum Yap'}
+                    </button>
+                  </div>
+
+                  {/* Success Message */}
+                  {commentSuccess && (
+                    <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
+                      ✅ Yorumunuz gönderildi! Yönetici onayından sonra yayınlanacaktır.
+                    </div>
+                  )}
+
+                  {/* Comment Form */}
+                  {showCommentForm && (
+                    <form onSubmit={handleCommentSubmit} className="bg-gray-50 p-6 rounded-lg mb-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Adınız *
+                          </label>
+                          <input
+                            type="text"
+                            name="user_name"
+                            value={commentForm.user_name}
+                            onChange={handleCommentChange}
+                            required
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                            placeholder="Adınız Soyadınız"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            E-posta *
+                          </label>
+                          <input
+                            type="email"
+                            name="user_email"
+                            value={commentForm.user_email}
+                            onChange={handleCommentChange}
+                            required
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                            placeholder="ornek@email.com"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Puanınız *
+                        </label>
+                        <div className="flex gap-2">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <button
+                              key={star}
+                              type="button"
+                              onClick={() => setCommentForm({ ...commentForm, rating: star })}
+                              className="text-3xl"
+                            >
+                              {star <= commentForm.rating ? '⭐' : '☆'}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Yorumunuz *
+                        </label>
+                        <textarea
+                          name="comment_text"
+                          value={commentForm.comment_text}
+                          onChange={handleCommentChange}
+                          required
+                          rows="4"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                          placeholder="Hizmet hakkındaki görüşleriniz..."
+                        ></textarea>
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={commentSubmitting}
+                        className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition disabled:opacity-50"
+                      >
+                        {commentSubmitting ? 'Gönderiliyor...' : 'Yorumu Gönder'}
+                      </button>
+                    </form>
+                  )}
+
+                  {/* Comments List */}
+                  <div className="space-y-4">
+                    {comments.length === 0 ? (
+                      <p className="text-gray-500 text-center py-8">
+                        Henüz yorum yapılmamış. İlk yorumu siz yapın!
+                      </p>
+                    ) : (
+                      comments.map((comment) => (
+                        <div key={comment.id} className="border-b pb-4 last:border-b-0">
+                          <div className="flex justify-between items-start mb-2">
+                            <div>
+                              <h4 className="font-semibold text-gray-900">{comment.user_name}</h4>
+                              <div className="flex items-center gap-2 text-sm text-gray-500">
+                                <span>{'⭐'.repeat(comment.rating)}</span>
+                                <span>•</span>
+                                <span>{new Date(comment.created_at).toLocaleDateString('tr-TR')}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <p className="text-gray-700">{comment.comment_text}</p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

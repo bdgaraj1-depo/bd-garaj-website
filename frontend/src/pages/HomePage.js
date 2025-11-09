@@ -163,10 +163,15 @@ const HomePage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service) => (
+            {services.map((service) => {
+              let linkTo = `/hizmet/${service.id}`;
+              if (service.name === "OTO-MOTO Alım Satım") linkTo = "/oto-moto";
+              if (service.name === "Yedek Parça") linkTo = "/yedek-parca";
+              
+              return (
               <Link
                 key={service.id}
-                to={service.name === "OTO-MOTO Alım Satım" ? "/oto-moto" : `/hizmet/${service.id}`}
+                to={linkTo}
                 className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden block group"
                 data-testid={`service-card-${service.id}`}
               >

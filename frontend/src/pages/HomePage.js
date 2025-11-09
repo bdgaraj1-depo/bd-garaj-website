@@ -169,36 +169,37 @@ const HomePage = () => {
               if (service.name === "Yedek Parça") linkTo = "/yedek-parca";
               
               return (
-              <Link
-                key={service.id}
-                to={linkTo}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden block group"
-                data-testid={`service-card-${service.id}`}
-              >
-                {service.image_url ? (
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={service.image_url}
-                      alt={service.name}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all"></div>
+                <Link
+                  key={service.id}
+                  to={linkTo}
+                  className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden block group"
+                  data-testid={`service-card-${service.id}`}
+                >
+                  {service.image_url ? (
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={service.image_url}
+                        alt={service.name}
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all"></div>
+                    </div>
+                  ) : (
+                    <div className="w-full h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-700 transition-all">
+                      <span className="text-6xl group-hover:scale-110 transition-transform">{service.icon}</span>
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-2xl">{service.icon}</span>
+                      <h3 className="text-xl font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">{service.name}</h3>
+                    </div>
+                    <p className="text-gray-600 mb-3">{service.description}</p>
+                    <span className="text-orange-600 font-medium group-hover:underline">Detaylı Bilgi →</span>
                   </div>
-                ) : (
-                  <div className="w-full h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-700 transition-all">
-                    <span className="text-6xl group-hover:scale-110 transition-transform">{service.icon}</span>
-                  </div>
-                )}
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">{service.icon}</span>
-                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">{service.name}</h3>
-                  </div>
-                  <p className="text-gray-600 mb-3">{service.description}</p>
-                  <span className="text-orange-600 font-medium group-hover:underline">Detaylı Bilgi →</span>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

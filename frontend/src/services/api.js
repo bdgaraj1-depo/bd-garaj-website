@@ -98,4 +98,27 @@ export const ctaAPI = {
   update: (data) => apiClient.put('/cta-section', data),
 };
 
+// Products API (OTO-MOTO Alım Satım)
+export const productsAPI = {
+  getAll: (category = null, status = null) => {
+    const params = {};
+    if (category) params.category = category;
+    if (status) params.status = status;
+    return apiClient.get('/products', { params });
+  },
+  getOne: (id) => apiClient.get(`/products/${id}`),
+  create: (data) => apiClient.post('/products', data),
+  update: (id, data) => apiClient.put(`/products/${id}`, data),
+  delete: (id) => apiClient.delete(`/products/${id}`),
+  uploadImage: (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return apiClient.post('/upload/product-image', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  },
+};
+
 export default apiClient;

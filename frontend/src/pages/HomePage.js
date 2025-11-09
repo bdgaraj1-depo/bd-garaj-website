@@ -45,19 +45,13 @@ const HomePage = () => {
       <section className="bg-gradient-to-br from-orange-600 to-orange-800 text-white pt-24 pb-20" data-testid="hero-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-8">
               <img 
-                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/7gc7uuu4_PHOTO-2025-11-09-23-04-00.jpg" 
                 alt="BD Garaj Logo" 
-                className="h-32 w-32 md:h-40 md:w-40 object-contain"
+                className="h-48 w-auto md:h-64 lg:h-80 object-contain"
               />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6" data-testid="hero-title">
-              Burak Doğan'ın Garajı: BD Garaj
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-orange-100">
-              Motosiklet tutkusunu profesyonellikle buluşturan özel servis noktası
-            </p>
             <p className="text-lg mb-8 max-w-3xl mx-auto">
               İstanbul Bayrampaşa'da bulunan BD Garaj, her marka ve model motosiklet için AlienTech
               yazılım, bakım & onarım, çanta projelendirme ve montaj, sigorta ve dosya takibi

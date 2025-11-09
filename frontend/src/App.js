@@ -14,6 +14,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminBlogPage from './pages/AdminBlogPage';
 import AdminServicesPage from './pages/AdminServicesPage';
 import AdminProductsPage from './pages/AdminProductsPage';
+import AdminCommentsPage from './pages/AdminCommentsPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {

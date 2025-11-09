@@ -827,6 +827,110 @@ async def update_cta_section(
     
     return CTASection(**cta)
 
+# ==================== PRODUCTS ENDPOINTS (OTO-MOTO Alım Satım) ====================
+
+@api_router.get("/products", response_model=List[Product])
+async def get_products(category: Optional[str] = None, status: Optional[str] = None):
+    """Get all products, optionally filtered by category and status"""
+    query = {}
+    if category:
+        query["category"] = category
+    if status:
+        query["status"] = status
+    
+    products = await db.products.find(query, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    for product in products:
+        if isinstance(product.get('created_at'), str):
+            product['created_at'] = datetime.fromisoformat(product['created_at'])
+        if isinstance(product.get('updated_at'), str):
+            product['updated_at'] = datetime.fromisoformat(product['updated_at'])
+    return products
+
+@api_router.get("/products/{product_id}", response_model=Product)
+async def get_product(product_id: str):
+    product = await db.products.find_one({"id": product_id}, {"_id": 0})
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    if isinstance(product.get('created_at'), str):
+        product['created_at'] = datetime.fromisoformat(product['created_at'])
+    if isinstance(product.get('updated_at'), str):
+        product['updated_at'] = datetime.fromisoformat(product['updated_at'])
+    return Product(**product)
+
+@api_router.post("/products", response_model=Product)
+async def create_product(
+    product_create: ProductCreate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    product = Product(**product_create.model_dump())
+    doc = product.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    doc['updated_at'] = doc['updated_at'].isoformat()
+    await db.products.insert_one(doc)
+    return product
+
+@api_router.put("/products/{product_id}", response_model=Product)
+async def update_product(
+    product_id: str,
+    update_data: ProductUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    product = await db.products.find_one({"id": product_id}, {"_id": 0})
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    
+    update_dict = {k: v for k, v in update_data.model_dump().items() if v is not None}
+    if update_dict:
+        update_dict['updated_at'] = datetime.now(timezone.utc).isoformat()
+        await db.products.update_one({"id": product_id}, {"$set": update_dict})
+        product.update(update_dict)
+    
+    if isinstance(product.get('created_at'), str):
+        product['created_at'] = datetime.fromisoformat(product['created_at'])
+    if isinstance(product.get('updated_at'), str):
+        product['updated_at'] = datetime.fromisoformat(product['updated_at'])
+    return Product(**product)
+
+@api_router.delete("/products/{product_id}")
+async def delete_product(product_id: str, current_admin: Admin = Depends(get_current_admin)):
+    result = await db.products.delete_one({"id": product_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return {"message": "Product deleted successfully"}
+
+@api_router.post("/upload/product-image")
+async def upload_product_image(
+    file: UploadFile = File(...),
+    current_admin: Admin = Depends(get_current_admin)
+):
+    """Upload product image"""
+    # Validate file type
+    allowed_types = ["image/jpeg", "image/png", "image/jpg", "image/webp", "image/gif"]
+    if file.content_type not in allowed_types:
+        raise HTTPException(status_code=400, detail="Invalid file type. Only images allowed.")
+    
+    # Validate file size (max 5MB)
+    temp_file = await file.read()
+    file_size = len(temp_file)
+    
+    if file_size > 5 * 1024 * 1024:  # 5MB
+        raise HTTPException(status_code=400, detail="File too large. Max 5MB allowed.")
+    
+    # Generate unique filename
+    file_extension = file.filename.split(".")[-1]
+    unique_filename = f"{uuid.uuid4()}.{file_extension}"
+    file_path = Path("/app/backend/uploads") / unique_filename
+    
+    # Save file
+    with open(file_path, "wb") as f:
+        f.write(temp_file)
+    
+    # Return URL
+    file_url = f"/uploads/{unique_filename}"
+    logger.info(f"Product image uploaded: {file_url}")
+    
+    return {"url": file_url, "filename": unique_filename}
+
 # ==================== HEALTH CHECK ====================
 
 @api_router.get("/")

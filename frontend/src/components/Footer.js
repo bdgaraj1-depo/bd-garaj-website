@@ -8,13 +8,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
+            <div className="flex items-center mb-4">
               <img 
-                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/7gc7uuu4_PHOTO-2025-11-09-23-04-00.jpg" 
                 alt="BD Garaj Logo" 
-                className="h-16 w-16 object-contain"
+                className="h-20 w-auto object-contain"
               />
-              <span className="text-2xl font-bold">BD Garaj</span>
             </div>
             <p className="text-gray-400 mb-4">
               İstanbul Bayrampaşa'da bulunan BD Garaj, motosiklet tutkusunu profesyonellikle

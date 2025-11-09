@@ -176,6 +176,8 @@ const AdminProductsPage = () => {
       vehicle: 'Araç',
       motorcycle: 'Motor',
       equipment: 'Ekipman',
+      spare_parts_new: 'Sıfır Yedek Parça',
+      spare_parts_used: 'İkinci El Yedek Parça',
     };
     return categories[category] || category;
   };

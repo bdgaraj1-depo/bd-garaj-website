@@ -112,6 +112,20 @@ const Navbar = () => {
               Randevu
             </Link>
             <Link
+              to="/oto-moto"
+              className="block px-3 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-600 rounded-md"
+              onClick={() => setIsOpen(false)}
+            >
+              OTO-MOTO
+            </Link>
+            <Link
+              to="/yedek-parca"
+              className="block px-3 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-600 rounded-md"
+              onClick={() => setIsOpen(false)}
+            >
+              Yedek Parça
+            </Link>
+            <Link
               to="/blog"
               className="block px-3 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-600 rounded-md"
               onClick={() => setIsOpen(false)}

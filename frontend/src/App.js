@@ -8,6 +8,7 @@ import BlogDetailPage from './pages/BlogDetailPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminBlogPage from './pages/AdminBlogPage';
+import AdminServicesPage from './pages/AdminServicesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {

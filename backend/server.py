@@ -625,6 +625,167 @@ async def upload_service_image(
     
     return {"url": file_url, "filename": unique_filename}
 
+# ==================== FEATURES ENDPOINTS (Neden BD Garaj) ====================
+
+@api_router.get("/features", response_model=List[Feature])
+async def get_features():
+    features = await db.features.find({}, {"_id": 0}).sort("order", 1).to_list(1000)
+    return features
+
+@api_router.post("/features", response_model=Feature)
+async def create_feature(feature_create: FeatureCreate, current_admin: Admin = Depends(get_current_admin)):
+    feature = Feature(**feature_create.model_dump())
+    await db.features.insert_one(feature.model_dump())
+    return feature
+
+@api_router.put("/features/{feature_id}", response_model=Feature)
+async def update_feature(
+    feature_id: str,
+    update_data: FeatureUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    feature = await db.features.find_one({"id": feature_id}, {"_id": 0})
+    if not feature:
+        raise HTTPException(status_code=404, detail="Feature not found")
+    
+    update_dict = {k: v for k, v in update_data.model_dump().items() if v is not None}
+    if update_dict:
+        await db.features.update_one({"id": feature_id}, {"$set": update_dict})
+        feature.update(update_dict)
+    
+    return Feature(**feature)
+
+@api_router.delete("/features/{feature_id}")
+async def delete_feature(feature_id: str, current_admin: Admin = Depends(get_current_admin)):
+    result = await db.features.delete_one({"id": feature_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Feature not found")
+    return {"message": "Feature deleted successfully"}
+
+# ==================== TESTIMONIALS ENDPOINTS (Müşteri Yorumları) ====================
+
+@api_router.get("/testimonials", response_model=List[Testimonial])
+async def get_testimonials():
+    testimonials = await db.testimonials.find({}, {"_id": 0}).sort("order", 1).to_list(1000)
+    return testimonials
+
+@api_router.post("/testimonials", response_model=Testimonial)
+async def create_testimonial(testimonial_create: TestimonialCreate, current_admin: Admin = Depends(get_current_admin)):
+    testimonial = Testimonial(**testimonial_create.model_dump())
+    await db.testimonials.insert_one(testimonial.model_dump())
+    return testimonial
+
+@api_router.put("/testimonials/{testimonial_id}", response_model=Testimonial)
+async def update_testimonial(
+    testimonial_id: str,
+    update_data: TestimonialUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    testimonial = await db.testimonials.find_one({"id": testimonial_id}, {"_id": 0})
+    if not testimonial:
+        raise HTTPException(status_code=404, detail="Testimonial not found")
+    
+    update_dict = {k: v for k, v in update_data.model_dump().items() if v is not None}
+    if update_dict:
+        await db.testimonials.update_one({"id": testimonial_id}, {"$set": update_dict})
+        testimonial.update(update_dict)
+    
+    return Testimonial(**testimonial)
+
+@api_router.delete("/testimonials/{testimonial_id}")
+async def delete_testimonial(testimonial_id: str, current_admin: Admin = Depends(get_current_admin)):
+    result = await db.testimonials.delete_one({"id": testimonial_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Testimonial not found")
+    return {"message": "Testimonial deleted successfully"}
+
+# ==================== FAQ ENDPOINTS (SSS) ====================
+
+@api_router.get("/faqs", response_model=List[FAQ])
+async def get_faqs():
+    faqs = await db.faqs.find({}, {"_id": 0}).sort("order", 1).to_list(1000)
+    return faqs
+
+@api_router.post("/faqs", response_model=FAQ)
+async def create_faq(faq_create: FAQCreate, current_admin: Admin = Depends(get_current_admin)):
+    faq = FAQ(**faq_create.model_dump())
+    await db.faqs.insert_one(faq.model_dump())
+    return faq
+
+@api_router.put("/faqs/{faq_id}", response_model=FAQ)
+async def update_faq(
+    faq_id: str,
+    update_data: FAQUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    faq = await db.faqs.find_one({"id": faq_id}, {"_id": 0})
+    if not faq:
+        raise HTTPException(status_code=404, detail="FAQ not found")
+    
+    update_dict = {k: v for k, v in update_data.model_dump().items() if v is not None}
+    if update_dict:
+        await db.faqs.update_one({"id": faq_id}, {"$set": update_dict})
+        faq.update(update_dict)
+    
+    return FAQ(**faq)
+
+@api_router.delete("/faqs/{faq_id}")
+async def delete_faq(faq_id: str, current_admin: Admin = Depends(get_current_admin)):
+    result = await db.faqs.delete_one({"id": faq_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="FAQ not found")
+    return {"message": "FAQ deleted successfully"}
+
+# ==================== CONTACT INFO ENDPOINTS ====================
+
+@api_router.get("/contact-info", response_model=ContactInfo)
+async def get_contact_info():
+    contact = await db.contact_info.find_one({"id": "contact_info"}, {"_id": 0})
+    if not contact:
+        raise HTTPException(status_code=404, detail="Contact info not found")
+    return ContactInfo(**contact)
+
+@api_router.put("/contact-info", response_model=ContactInfo)
+async def update_contact_info(
+    update_data: ContactInfoUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    contact = await db.contact_info.find_one({"id": "contact_info"}, {"_id": 0})
+    if not contact:
+        raise HTTPException(status_code=404, detail="Contact info not found")
+    
+    update_dict = {k: v for k, v in update_data.model_dump().items() if v is not None}
+    if update_dict:
+        await db.contact_info.update_one({"id": "contact_info"}, {"$set": update_dict})
+        contact.update(update_dict)
+    
+    return ContactInfo(**contact)
+
+# ==================== CTA SECTION ENDPOINTS ====================
+
+@api_router.get("/cta-section", response_model=CTASection)
+async def get_cta_section():
+    cta = await db.cta_section.find_one({"id": "cta_section"}, {"_id": 0})
+    if not cta:
+        raise HTTPException(status_code=404, detail="CTA section not found")
+    return CTASection(**cta)
+
+@api_router.put("/cta-section", response_model=CTASection)
+async def update_cta_section(
+    update_data: CTASectionUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    cta = await db.cta_section.find_one({"id": "cta_section"}, {"_id": 0})
+    if not cta:
+        raise HTTPException(status_code=404, detail="CTA section not found")
+    
+    update_dict = {k: v for k, v in update_data.model_dump().items() if v is not None}
+    if update_dict:
+        await db.cta_section.update_one({"id": "cta_section"}, {"$set": update_dict})
+        cta.update(update_dict)
+    
+    return CTASection(**cta)
+
 # ==================== HEALTH CHECK ====================
 
 @api_router.get("/")

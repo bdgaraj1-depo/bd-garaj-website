@@ -368,10 +368,51 @@ async def delete_blog_post(post_id: str, current_admin: Admin = Depends(get_curr
 
 # ==================== SERVICES ENDPOINTS ====================
 
+class ServiceCreate(BaseModel):
+    name: str
+    description: str
+    icon: str
+
+class ServiceUpdate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    icon: Optional[str] = None
+
 @api_router.get("/services", response_model=List[Service])
 async def get_services():
     services = await db.services.find({}, {"_id": 0}).to_list(1000)
     return services
+
+@api_router.post("/services", response_model=Service)
+async def create_service(service_create: ServiceCreate, current_admin: Admin = Depends(get_current_admin)):
+    service = Service(**service_create.model_dump())
+    doc = service.model_dump()
+    await db.services.insert_one(doc)
+    return service
+
+@api_router.put("/services/{service_id}", response_model=Service)
+async def update_service(
+    service_id: str,
+    update_data: ServiceUpdate,
+    current_admin: Admin = Depends(get_current_admin)
+):
+    service = await db.services.find_one({"id": service_id}, {"_id": 0})
+    if not service:
+        raise HTTPException(status_code=404, detail="Service not found")
+    
+    update_dict = {k: v for k, v in update_data.model_dump().items() if v is not None}
+    if update_dict:
+        await db.services.update_one({"id": service_id}, {"$set": update_dict})
+        service.update(update_dict)
+    
+    return Service(**service)
+
+@api_router.delete("/services/{service_id}")
+async def delete_service(service_id: str, current_admin: Admin = Depends(get_current_admin)):
+    result = await db.services.delete_one({"id": service_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Service not found")
+    return {"message": "Service deleted successfully"}
 
 # ==================== HEALTH CHECK ====================
 

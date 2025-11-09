@@ -344,6 +344,7 @@ async def startup_db_client():
             Service(name="Bakım & Onarım", description="Periyodik bakım ve genel onarım hizmetleri", icon="🔧"),
             Service(name="Çanta Montaj Projelendirme", description="TSE onaylı çanta sistemleri projelendirme ve montaj", icon="🧳"),
             Service(name="Sigorta Hasar Takip", description="Kaza ve hasar durumlarında sigorta işlemleri takibi", icon="📋"),
+            Service(name="OTO-MOTO Alım Satım", description="Araç, motor ve ekipman alım satım hizmetleri", icon="🚗"),
         ]
         for service in default_services:
             doc = service.model_dump()

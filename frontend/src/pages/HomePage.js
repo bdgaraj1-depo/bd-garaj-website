@@ -37,35 +37,6 @@ const HomePage = () => {
     fetchData();
   }, []);
 
-  const testimonials = [
-    { id: 1, name: 'Ahmet Y.', text: 'Profesyonel ekip, güvenilir hizmet!' },
-    { id: 2, name: 'Mehmet K.', text: 'Motosikletim adeta yeniden doğdu!' },
-    { id: 3, name: 'Burak D.', text: 'İlgileri ve iş kaliteleri mükemmel' },
-  ];
-
-  const faqs = [
-    {
-      id: 1,
-      question: 'Hangi motosiklet markalarına hizmet veriyorsunuz?',
-      answer: 'Tüm marka ve modellere hizmet veriyoruz.',
-    },
-    {
-      id: 2,
-      question: 'İşlem süreleri ne kadar?',
-      answer: 'İşleme göre değişmekle birlikte, 1-3 iş günü arasında tamamlıyoruz.',
-    },
-    {
-      id: 3,
-      question: 'Garanti hizmetiniz var mı?',
-      answer: 'Evet, tüm hizmetlerimiz için 6 ay garanti sunuyoruz.',
-    },
-    {
-      id: 4,
-      question: 'Acil durumlarda ne yapmalıyım?',
-      answer: '7/24 WhatsApp hattımızdan bize ulaşabilirsiniz.',
-    },
-  ];
-
   return (
     <div className="min-h-screen flex flex-col" data-testid="home-page">
       <Navbar />

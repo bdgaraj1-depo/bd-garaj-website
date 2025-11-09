@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { QRCodeSVG } from 'qrcode.react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { servicesAPI, featuresAPI, testimonialsAPI, faqsAPI, contactAPI, ctaAPI } from '../services/api';

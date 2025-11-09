@@ -190,15 +190,13 @@ const YedekParcaPage = () => {
               Bizimle iletişime geçin, ilanınızı biz yayınlayalım veya aradığınız parçayı bulalım
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://wa.me/905326832603?text=Merhaba%2C%20yedek%20par%C3%A7a%20i%C3%A7in%20ilan%20vermek%20veya%20ara%C5%9Ft%C4%B1rma%20yapmak%20istiyorum."
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openWhatsApp('Merhaba, yedek parça için ilan vermek veya araştırma yapmak istiyorum.')}
                 className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition"
                 data-testid="cta-whatsapp"
               >
                 WhatsApp ile İletişim
-              </a>
+              </button>
               <a
                 href="tel:+905326832603"
                 className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition"

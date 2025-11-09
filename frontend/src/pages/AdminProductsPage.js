@@ -124,7 +124,7 @@ const AdminProductsPage = () => {
       price: product.price.toString(),
       currency: product.currency,
       status: product.status,
-      contact_phone: product.contact_phone || '0532 683 26 03',
+      contact_phone: product.contact_phone || '05326832603',
       contact_email: product.contact_email || 'bdgaraj1@gmail.com',
       images: product.images || [],
       specs: product.specs || {},

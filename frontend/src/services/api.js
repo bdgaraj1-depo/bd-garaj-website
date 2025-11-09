@@ -121,4 +121,26 @@ export const productsAPI = {
   },
 };
 
+// Comments API
+export const commentsAPI = {
+  // Public endpoints
+  getAll: (serviceId = null, status = null) => {
+    const params = {};
+    if (serviceId) params.service_id = serviceId;
+    if (status) params.status = status;
+    return apiClient.get('/comments', { params });
+  },
+  create: (data) => apiClient.post('/comments', data),
+  
+  // Admin endpoints
+  getAllAdmin: (serviceId = null, status = null) => {
+    const params = {};
+    if (serviceId) params.service_id = serviceId;
+    if (status) params.status = status;
+    return apiClient.get('/comments/all', { params });
+  },
+  updateStatus: (id, status) => apiClient.patch(`/comments/${id}`, { status }),
+  delete: (id) => apiClient.delete(`/comments/${id}`),
+};
+
 export default apiClient;

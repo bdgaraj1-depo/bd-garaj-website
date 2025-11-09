@@ -375,11 +375,13 @@ class ServiceCreate(BaseModel):
     name: str
     description: str
     icon: str
+    image_url: Optional[str] = ""
 
 class ServiceUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     icon: Optional[str] = None
+    image_url: Optional[str] = None
 
 @api_router.get("/services", response_model=List[Service])
 async def get_services():

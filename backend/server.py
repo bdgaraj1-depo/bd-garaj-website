@@ -120,6 +120,95 @@ class Service(BaseModel):
     icon: str
     image_url: Optional[str] = ""
 
+class Feature(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    icon: str
+    title: str
+    description: str
+    order: int = 0
+
+class FeatureCreate(BaseModel):
+    icon: str
+    title: str
+    description: str
+    order: int = 0
+
+class FeatureUpdate(BaseModel):
+    icon: Optional[str] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    order: Optional[int] = None
+
+class Testimonial(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    text: str
+    rating: int = 5
+    order: int = 0
+
+class TestimonialCreate(BaseModel):
+    name: str
+    text: str
+    rating: int = 5
+    order: int = 0
+
+class TestimonialUpdate(BaseModel):
+    name: Optional[str] = None
+    text: Optional[str] = None
+    rating: Optional[int] = None
+    order: Optional[int] = None
+
+class FAQ(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    question: str
+    answer: str
+    order: int = 0
+
+class FAQCreate(BaseModel):
+    question: str
+    answer: str
+    order: int = 0
+
+class FAQUpdate(BaseModel):
+    question: Optional[str] = None
+    answer: Optional[str] = None
+    order: Optional[int] = None
+
+class ContactInfo(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = "contact_info"
+    address: str
+    phone: str
+    email: str
+    whatsapp: str
+    working_hours: str
+    emergency_phone: str
+    maps_url: str
+
+class ContactInfoUpdate(BaseModel):
+    address: Optional[str] = None
+    phone: Optional[str] = None
+    email: Optional[str] = None
+    whatsapp: Optional[str] = None
+    working_hours: Optional[str] = None
+    emergency_phone: Optional[str] = None
+    maps_url: Optional[str] = None
+
+class CTASection(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = "cta_section"
+    title: str
+    subtitle: str
+    button_text: str
+
+class CTASectionUpdate(BaseModel):
+    title: Optional[str] = None
+    subtitle: Optional[str] = None
+    button_text: Optional[str] = None
+
 # ==================== HELPER FUNCTIONS ====================
 
 def hash_password(password: str) -> str:

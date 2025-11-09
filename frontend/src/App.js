@@ -64,6 +64,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/comments"
+            element={
+              <ProtectedRoute>
+                <AdminCommentsPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

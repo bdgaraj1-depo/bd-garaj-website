@@ -21,10 +21,8 @@ const Footer = () => {
               buluşturan özel bir servis noktasıdır.
             </p>
             <div className="flex space-x-4">
-              <a
-                href="https://wa.me/905326832603"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openWhatsApp('Merhaba, BD Garaj hakkında bilgi almak istiyorum.')}
                 className="text-gray-400 hover:text-green-500 transition"
                 data-testid="footer-whatsapp"
               >

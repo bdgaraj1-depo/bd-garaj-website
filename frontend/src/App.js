@@ -7,6 +7,7 @@ import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import OtoMotoPage from './pages/OtoMotoPage';
+import YedekParcaPage from './pages/YedekParcaPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboard from './pages/AdminDashboard';

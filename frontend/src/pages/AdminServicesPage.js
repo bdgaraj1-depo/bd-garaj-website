@@ -220,6 +220,20 @@ const AdminServicesPage = () => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Hizmet Görseli
+                  </label>
+                  <ImageUploader
+                    currentImage={formData.image_url}
+                    onImageUpload={handleImageUpload}
+                    onImageRemove={handleImageRemove}
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Hizmet için görsel yükleyebilirsiniz (sürükle-bırak veya tıklayın)
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Hizmet Adı *
                   </label>
                   <input

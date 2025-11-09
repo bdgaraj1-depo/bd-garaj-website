@@ -6,6 +6,7 @@ import AppointmentPage from './pages/AppointmentPage';
 import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import OtoMotoPage from './pages/OtoMotoPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminBlogPage from './pages/AdminBlogPage';

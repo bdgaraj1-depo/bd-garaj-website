@@ -56,8 +56,15 @@ const HomePage = () => {
       <section className="bg-gradient-to-br from-orange-600 to-orange-800 text-white pt-24 pb-20" data-testid="hero-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+                alt="BD Garaj Logo" 
+                className="h-32 w-32 md:h-40 md:w-40 object-contain"
+              />
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6" data-testid="hero-title">
-              🏍️ Burak Doğan'ın Garajı: BD Garaj
+              Burak Doğan'ın Garajı: BD Garaj
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-orange-100">
               Motosiklet tutkusunu profesyonellikle buluşturan özel servis noktası

@@ -28,6 +28,8 @@ function App() {
           <Route path="/hizmet/:id" element={<ServiceDetailPage />} />
           <Route path="/oto-moto" element={<OtoMotoPage />} />
           <Route path="/oto-moto/:id" element={<ProductDetailPage />} />
+          <Route path="/yedek-parca" element={<YedekParcaPage />} />
+          <Route path="/yedek-parca/:id" element={<ProductDetailPage />} />
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route
             path="/admin/dashboard"

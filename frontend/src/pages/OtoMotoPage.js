@@ -191,15 +191,13 @@ const OtoMotoPage = () => {
               Bizimle iletişime geçin, ilanınızı biz yayınlayalım
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://wa.me/905326832603?text=Merhaba%2C%20ara%C3%A7%20veya%20motor%20al%C4%B1m%20sat%C4%B1m%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum."
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openWhatsApp('Merhaba, araç veya motor alım satımı için bilgi almak istiyorum.')}
                 className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition"
                 data-testid="cta-whatsapp"
               >
                 WhatsApp ile İletişim
-              </a>
+              </button>
               <a
                 href="tel:+905326832603"
                 className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition"

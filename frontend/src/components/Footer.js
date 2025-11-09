@@ -8,8 +8,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="text-3xl">🏍️</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_site-kurulum-10/artifacts/rasgr3sl_logo.png" 
+                alt="BD Garaj Logo" 
+                className="h-16 w-16 object-contain"
+              />
               <span className="text-2xl font-bold">BD Garaj</span>
             </div>
             <p className="text-gray-400 mb-4">

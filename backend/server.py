@@ -424,6 +424,41 @@ async def delete_service(service_id: str, current_admin: Admin = Depends(get_cur
         raise HTTPException(status_code=404, detail="Service not found")
     return {"message": "Service deleted successfully"}
 
+@api_router.post("/upload/service-image")
+async def upload_service_image(
+    file: UploadFile = File(...),
+    current_admin: Admin = Depends(get_current_admin)
+):
+    """Upload service image"""
+    # Validate file type
+    allowed_types = ["image/jpeg", "image/png", "image/jpg", "image/webp", "image/gif"]
+    if file.content_type not in allowed_types:
+        raise HTTPException(status_code=400, detail="Invalid file type. Only images allowed.")
+    
+    # Validate file size (max 5MB)
+    file_size = 0
+    chunk_size = 1024 * 1024  # 1MB
+    temp_file = await file.read()
+    file_size = len(temp_file)
+    
+    if file_size > 5 * 1024 * 1024:  # 5MB
+        raise HTTPException(status_code=400, detail="File too large. Max 5MB allowed.")
+    
+    # Generate unique filename
+    file_extension = file.filename.split(".")[-1]
+    unique_filename = f"{uuid.uuid4()}.{file_extension}"
+    file_path = Path("/app/backend/uploads") / unique_filename
+    
+    # Save file
+    with open(file_path, "wb") as f:
+        f.write(temp_file)
+    
+    # Return URL
+    file_url = f"/uploads/{unique_filename}"
+    logger.info(f"File uploaded: {file_url}")
+    
+    return {"url": file_url, "filename": unique_filename}
+
 # ==================== HEALTH CHECK ====================
 
 @api_router.get("/")

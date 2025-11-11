@@ -32,7 +32,6 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
         <title>BD Garaj - Motosiklet Servisi | İstanbul Bayrampaşa</title>
-        <script src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
         <!--
         These two scripts have been added for the testing, please do not edit or remove them
         -->
@@ -45,8 +44,8 @@
             // Only load visual edit scripts when inside an iframe and visual edits are enabled
             if (window.self !== window.top && '%REACT_APP_ENABLE_VISUAL_EDITS%' === 'true') {
                 // Load debug monitor script
-                var debugScript = document.createElement('script');
-                debugScript.src = 'https://assets.emergent.sh/scripts/debug-monitor.js';
+                var debugScript =
+                debugScript.src =
                 document.head.appendChild(debugScript);
 
                 // Configure Tailwind
@@ -76,9 +75,9 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
         <a
-            id="emergent-badge"
+            id=
             target="_blank"
-            href="https://app.emergent.sh/?utm_source=emergent-badge"
+            href=
             style="
                 display: flex !important;
                 align-items: center !important;

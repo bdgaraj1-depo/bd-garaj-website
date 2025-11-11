@@ -307,56 +307,64 @@ const HomePage = () => {
       )}
 
       {/* Contact Section */}
-      <section className="py-20 bg-gray-50" data-testid="contact-section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              📧 İletişim Bilgileri
-            </h2>
-          </div>
+      {contactInfo && (
+        <section className="py-20 bg-gray-50" data-testid="contact-section">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                📧 İletişim Bilgileri
+              </h2>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">📍 Adres</h3>
-              <p className="text-gray-600 mb-4">Hızırreis Sok. No:1A, Bayrampaşa / İstanbul</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">📍 Adres</h3>
+                <p className="text-gray-600 mb-4">{contactInfo.address}</p>
+                <a
+                  href={contactInfo.maps_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-600 hover:underline"
+                  data-testid="contact-maps-link"
+                >
+                  Haritada Gör →
+                </a>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">📞 İletişim</h3>
+                <p className="text-gray-600 mb-2">
+                  <strong>Telefon:</strong>{' '}
+                  <a href={`tel:+90${contactInfo.phone.replace(/\s/g, '')}`} className="text-orange-600 hover:underline">
+                    {contactInfo.phone}
+                  </a>
+                </p>
+                <p className="text-gray-600 mb-2">
+                  <strong>E-posta:</strong>{' '}
+                  <a href={`mailto:${contactInfo.email}`} className="text-orange-600 hover:underline">
+                    {contactInfo.email}
+                  </a>
+                </p>
+                <p className="text-gray-600">
+                  <strong>Çalışma Saatleri:</strong> {contactInfo.working_hours}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 bg-red-50 border border-red-200 p-6 rounded-lg text-center">
+              <h3 className="text-xl font-semibold text-red-900 mb-2">🚨 Acil Servis</h3>
+              <p className="text-gray-700 mb-4">Acil durumlar için öncelikli hat:</p>
               <a
-                href="https://maps.google.com/?q=Hızırreis+Sok.+No:1A+Bayrampaşa+Istanbul"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-orange-600 hover:underline"
-                data-testid="contact-maps-link"
+                href={`tel:+90${contactInfo.emergency_phone.replace(/\s/g, '')}`}
+                className="text-2xl font-bold text-red-600 hover:underline"
+                data-testid="contact-emergency-phone"
               >
-                Haritada Gör
+                {contactInfo.emergency_phone}
               </a>
             </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">📞 İletişim</h3>
-              <p className="text-gray-600 mb-2">
-                <strong>Telefon:</strong> 0532 683 26 03
-              </p>
-              <p className="text-gray-600 mb-2">
-                <strong>E-posta:</strong> bdgaraj1@gmail.com
-              </p>
-              <p className="text-gray-600">
-                <strong>Çalışma Saatleri:</strong> Pzt-Cmt 08:00-17:00
-              </p>
-            </div>
           </div>
-
-          <div className="mt-8 bg-red-50 border border-red-200 p-6 rounded-lg text-center">
-            <h3 className="text-xl font-semibold text-red-900 mb-2">🚨 Acıl Servis</h3>
-            <p className="text-gray-700 mb-4">Acil durumlar için öncelikli hat:</p>
-            <a
-              href="tel:+905326832603"
-              className="text-2xl font-bold text-red-600 hover:underline"
-              data-testid="contact-emergency-phone"
-            >
-              0532 683 26 03
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <Footer />
     </div>

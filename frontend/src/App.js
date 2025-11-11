@@ -73,6 +73,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/content"
+            element={
+              <ProtectedRoute>
+                <AdminContentPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

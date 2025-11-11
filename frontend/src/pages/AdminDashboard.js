@@ -90,6 +90,13 @@ const AdminDashboard = () => {
             </div>
             <div className="flex gap-4 mt-4 md:mt-0 flex-wrap">
               <Link
+                to="/admin/content"
+                className="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition"
+                data-testid="manage-content-btn"
+              >
+                🎨 İçerik Yönetimi
+              </Link>
+              <Link
                 to="/admin/products"
                 className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
                 data-testid="manage-products-btn"

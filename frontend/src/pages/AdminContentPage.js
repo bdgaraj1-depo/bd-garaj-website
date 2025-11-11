@@ -562,58 +562,92 @@ const AdminContentPage = () => {
                 {/* CTA Section Tab */}
                 {activeTab === 'cta' && (
                   <div className="space-y-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">🚀 CTA Bölümü (Randevu Çağrısı)</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                      🚀 Hemen Randevu Alın! (CTA Bölümü)
+                    </h2>
+                    
+                    <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-6">
+                      <p className="text-sm text-blue-800">
+                        ℹ️ Bu bölüm ana sayfada turuncu arka planlı büyük bir banner olarak görünür ve 
+                        kullanıcıları randevu almaya teşvik eder.
+                      </p>
+                    </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Başlık</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        📝 Ana Başlık
+                      </label>
                       <input
                         type="text"
                         name="title"
                         value={ctaSection.title}
                         onChange={handleCTAChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 text-lg font-semibold"
+                        placeholder="🚀 Hemen Randevu Alın!"
                       />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Büyük ve dikkat çekici bir başlık kullanın
+                      </p>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Açıklama</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        💬 Alt Başlık / Açıklama
+                      </label>
                       <textarea
-                        name="description"
-                        value={ctaSection.description}
+                        name="subtitle"
+                        value={ctaSection.subtitle}
                         onChange={handleCTAChange}
                         rows="3"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        placeholder="Motosikletiniz için hemen randevu alın, profesyonel hizmetlerimizden faydalanın"
                       ></textarea>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Kullanıcıları motive eden kısa bir açıklama
+                      </p>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Buton Metni</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        🔘 Buton Metni
+                      </label>
                       <input
                         type="text"
                         name="button_text"
                         value={ctaSection.button_text}
                         onChange={handleCTAChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        placeholder="Hemen Randevu Al"
                       />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Buton üzerinde gösterilecek metin (kısa ve etkili)
+                      </p>
                     </div>
 
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        name="show_whatsapp"
-                        checked={ctaSection.show_whatsapp}
-                        onChange={handleCTAChange}
-                        className="h-4 w-4 text-orange-600"
-                      />
-                      <label className="ml-2 text-sm text-gray-700">WhatsApp Butonunu Göster</label>
+                    {/* Preview */}
+                    <div className="bg-gray-100 p-6 rounded-lg border-2 border-dashed border-gray-300">
+                      <p className="text-xs text-gray-600 mb-4 font-semibold">👁️ ÖNİZLEME:</p>
+                      <div className="bg-orange-600 text-white p-8 rounded-lg text-center">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                          {ctaSection.title}
+                        </h3>
+                        <p className="text-lg mb-6 opacity-90">
+                          {ctaSection.subtitle}
+                        </p>
+                        <button className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold">
+                          {ctaSection.button_text}
+                        </button>
+                      </div>
                     </div>
 
-                    <button
-                      onClick={handleCTASave}
-                      className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition"
-                    >
-                      Kaydet
-                    </button>
+                    <div className="pt-4 border-t">
+                      <button
+                        onClick={handleCTASave}
+                        className="bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 transition font-semibold"
+                      >
+                        💾 Değişiklikleri Kaydet
+                      </button>
+                    </div>
                   </div>
                 )}
               </>

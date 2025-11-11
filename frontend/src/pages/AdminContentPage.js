@@ -43,16 +43,17 @@ const AdminContentPage = () => {
     phone: '0532 683 26 03',
     email: 'bdgaraj1@gmail.com',
     address: 'Hızırreis Sok. No:1A, Bayrampaşa / İstanbul',
+    whatsapp: '905326832603',
     working_hours: 'Pazartesi - Cumartesi: 08:00 - 17:00',
     emergency_phone: '0532 683 26 03',
+    maps_url: 'https://maps.google.com/?q=Hızırreis+Sok.+No:1A+Bayrampaşa+Istanbul',
   });
 
   // CTA Section State
   const [ctaSection, setCTASection] = useState({
-    title: 'Randevu Almak İster Misiniz?',
-    description: 'Motosikletiniz için hemen randevu alın, profesyonel hizmetlerimizden faydalanın',
+    title: '🚀 Hemen Randevu Alın!',
+    subtitle: 'Motosikletiniz için hemen randevu alın, profesyonel hizmetlerimizden faydalanın',
     button_text: 'Hemen Randevu Al',
-    show_whatsapp: true,
   });
 
   useEffect(() => {

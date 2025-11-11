@@ -15,6 +15,7 @@ import AdminBlogPage from './pages/AdminBlogPage';
 import AdminServicesPage from './pages/AdminServicesPage';
 import AdminProductsPage from './pages/AdminProductsPage';
 import AdminCommentsPage from './pages/AdminCommentsPage';
+import AdminContentPage from './pages/AdminContentPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {

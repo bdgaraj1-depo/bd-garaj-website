@@ -439,68 +439,123 @@ const AdminContentPage = () => {
                 {activeTab === 'contact' && (
                   <div className="space-y-6">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6">📞 İletişim Bilgileri</h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          📱 Telefon (Görüntüleme için)
+                        </label>
+                        <input
+                          type="text"
+                          name="phone"
+                          value={contactInfo.phone}
+                          onChange={handleContactChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                          placeholder="0532 683 26 03"
+                        />
+                        <p className="text-xs text-gray-500 mt-1">Format: 0532 683 26 03</p>
+                      </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
-                      <input
-                        type="text"
-                        name="phone"
-                        value={contactInfo.phone}
-                        onChange={handleContactChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
-                      />
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          💬 WhatsApp Numarası (0 olmadan)
+                        </label>
+                        <input
+                          type="text"
+                          name="whatsapp"
+                          value={contactInfo.whatsapp}
+                          onChange={handleContactChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                          placeholder="905326832603"
+                        />
+                        <p className="text-xs text-gray-500 mt-1">Format: 905326832603 (ülke kodu + numara)</p>
+                      </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">E-posta</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        📧 E-posta Adresi
+                      </label>
                       <input
                         type="email"
                         name="email"
                         value={contactInfo.email}
                         onChange={handleContactChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        placeholder="bdgaraj1@gmail.com"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Adres</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        📍 Adres
+                      </label>
                       <input
                         type="text"
                         name="address"
                         value={contactInfo.address}
                         onChange={handleContactChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        placeholder="Hızırreis Sok. No:1A, Bayrampaşa / İstanbul"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Çalışma Saatleri</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        🗺️ Google Maps URL
+                      </label>
+                      <input
+                        type="url"
+                        name="maps_url"
+                        value={contactInfo.maps_url}
+                        onChange={handleContactChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        placeholder="https://maps.google.com/?q=..."
+                      />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Google Maps'te konumunuzu bulun ve "Paylaş" → "Link Kopyala"
+                      </p>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        ⏰ Çalışma Saatleri
+                      </label>
                       <input
                         type="text"
                         name="working_hours"
                         value={contactInfo.working_hours}
                         onChange={handleContactChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        placeholder="Pazartesi - Cumartesi: 08:00 - 17:00"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Acil Servis Telefonu</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        🚨 Acil Servis Telefonu
+                      </label>
                       <input
                         type="text"
                         name="emergency_phone"
                         value={contactInfo.emergency_phone}
                         onChange={handleContactChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                        placeholder="0532 683 26 03"
                       />
+                      <p className="text-xs text-red-500 mt-1">
+                        Acil durumlar için gösterilecek telefon numarası
+                      </p>
                     </div>
 
-                    <button
-                      onClick={handleContactSave}
-                      className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition"
-                    >
-                      Kaydet
-                    </button>
+                    <div className="pt-4 border-t">
+                      <button
+                        onClick={handleContactSave}
+                        className="bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 transition font-semibold"
+                      >
+                        💾 Değişiklikleri Kaydet
+                      </button>
+                    </div>
                   </div>
                 )}
 
